@@ -1,0 +1,180 @@
+Configuration Code:
+
+
+Lab_A:
+
+Router>enable
+Router#configure terminal
+Router(config)#hostname Lab_A
+Lab_A(config)#enable password cisco
+Lab_A(config)#enable secret class
+Lab_A(config)#line console 0
+Lab_A(config-line)#login
+Lab_A(config-line)#password cisco
+Lab_A(config-line)#line vty 0 4
+Lab_A(config-line)#login
+Lab_A(config-line)#password cisco
+Lab_A(config-line)#exit
+Lab_A(config)#interface ethernet 0
+Lab_A(config-if)#ip address 192.5.5.1 255.255.0.0
+Lab_A(config-if)#no shutdown
+Lab_A(config-if)#int e1
+Lab_A(config-if)#ip address 205.7.5.1 255.255.0.0
+Lab_A(config-if)#no shutdown
+Lab_A(config-if)#int serial 0
+Lab_A(config-if)#ip address 201.100.11.1 255.255.255.0
+Lab_A(config-if)#clock rate 56000
+Lab_A(config-if)#no shut
+Lab_A(config-if)#exit
+Lab_A(config)#router rip
+Lab_A(config-router)#network 192.5.5.0
+Lab_A(config-router)#network 205.7.5.0
+Lab_A(config-router)#network 201.100.11.0
+Lab_A(config-router)#exit
+Lab_A(config)#ip host Lab_A 192.5.5.1 205.7.5.1 201.100.11.1
+Lab_A(config)#ip host Lab_B 219.17.100.1 199.6.13.1 201.100.11.2
+Lab_A(config)#ip host Lab_C 223.8.151.1 204.204.7.1 199.6.13.2
+Lab_A(config)#ip host Lab_D 210.93.105.1 204.204.7.2
+Lab_A(config)#ip host Lab_E 210.93.105.2
+Lab_A(config)#exit
+Lab_A#
+
+
+Lab_B:
+
+Router>en
+Router#conf t
+Router(config)#hostname Lab_B
+Lab_B(config)#enable password cisco
+Lab_B(config)#enable secret class
+Lab_B(config)#line console 0
+Lab_B(config-line)#login
+Lab_B(config-line)#password cisco
+Lab_B(config-line)#line vty 0 4
+Lab_B(config-line)#login
+Lab_B(config-line)#password cisco
+Lab_B(config-line)#exit
+Lab_B(config)#int e0
+Lab_B(config-if)#ip address 219.17.100.1 255.255.255.0
+Lab_B(config-if)#no shutdown
+Lab_B(config-if)#int s0
+Lab_B(config-if)#ip address 199.6.13.1 255.255.255.0
+Lab_B(config-if)#clock rate 56000
+Lab_B(config-if)#no shutdown
+Lab_B(config-if)#int s1
+Lab_B(config-if)#ip address 201.100.11.2 255.255.255.0
+Lab_B(config-if)#clock rate 56000
+Lab_B(config-if)#no shutdown
+Lab_B(config-if)#exit
+Lab_B(config)#router rip
+Lab_B(config-router)#network 219.17.100.0
+Lab_B(config-router)#network 199.6.13.0
+Lab_B(config-router)#network 201.100.11.0
+Lab_B(config-router)#exit
+Lab_B(config)#ip host Lab_A 192.5.5.1 205.7.5.1 201.100.11.1
+Lab_B(config)#ip host Lab_B 219.17.100.1 199.6.13.1 201.100.11.2
+Lab_B(config)#ip host Lab_C 223.8.151.1 204.204.7.1 199.6.13.2
+Lab_B(config)#ip host Lab_D 210.93.105.1 204.204.7.2
+Lab_B(config)#ip host Lab_E 210.93.105.2
+Lab_B(config)#exit
+Lab_B#
+
+
+Lab_C:
+
+Router>en
+Router#conf t
+Router(config)#hostname Lab_C
+Lab_C(config)#enable password cisco
+Lab_C(config)#enable secret class
+Lab_C(config)#line console 0
+Lab_C(config-line)#login
+Lab_C(config-line)#password cisco
+Lab_C(config-line)#line vty 0 4
+Lab_C(config-line)#login
+Lab_C(config-line)#password cisco
+Lab_C(config-line)#exit
+Lab_C(config)#int e0
+Lab_C(config-if)#ip address 223.8.151.1 255.255.255.0
+Lab_C(config-if)#no shutdown
+Lab_C(config-if)#int s0
+Lab_C(config-if)#ip address 204.204.7.1 255.255.255.0
+Lab_C(config-if)#clock rate 56000
+Lab_C(config-if)#no shutdown
+Lab_C(config-if)#int s1
+Lab_C(config-if)#ip address 199.6.13.2 255.255.255.0
+Lab_C(config-if)#no shutdown
+Lab_C(config-if)#exit
+Lab_C(config)#router rip
+Lab_C(config-router)#network 223.8.151.0
+Lab_C(config-router)#network 204.204.7.0
+Lab_C(config-router)#network 199.6.13.0
+Lab_C(config-router)#exit
+Lab_C(config)#ip host Lab_A 192.5.5.1 205.7.5.1 201.100.11.1
+Lab_C(config)#ip host Lab_B 219.17.100.1 199.6.13.1 201.100.11.2
+Lab_C(config)#ip host Lab_C 223.8.151.1 204.204.7.1 199.6.13.2
+Lab_C(config)#ip host Lab_D 210.93.105.1 204.204.7.2
+Lab_C(config)#ip host Lab_E 210.93.105.2
+Lab_C(config)#exit
+Lab_C#
+
+
+Lab_D:
+
+Router>en
+Router#conf t
+Router(config)#hostname Lab_D
+Lab_D(config)#enable secret class
+Lab_D(config)#line console 0
+Lab_D(config-line)#login
+Lab_D(config-line)#password cisco
+Lab_D(config-line)#line vty 0 4
+Lab_D(config-line)#login
+Lab_D(config-line)#password cisco
+Lab_D(config-line)#exit
+Lab_D(config)#int e0
+Lab_D(config-if)#ip address 210.93.105.1 255.255.255.0
+Lab_D(config-if)#no shutdown
+Lab_D(config-if)#int s1
+Lab_D(config-if)#ip address 204.204.7.2 255.255.255.0
+Lab_D(config-if)#no shutdown
+Lab_D(config-if)#exit
+Lab_D(config)#router rip
+Lab_D(config-router)#network 210.93.105.0
+Lab_D(config-router)#network 204.204.7.0
+Lab_D(config-router)#exit
+Lab_D(config)#ip host Lab_A 192.5.5.1 205.7.5.1 201.100.11.1
+Lab_D(config)#ip host Lab_B 219.17.100.1 199.6.13.1 201.100.11.2
+Lab_D(config)#ip host Lab_C 223.8.151.1 204.204.7.1 199.6.13.2
+Lab_D(config)#ip host Lab_D 210.93.105.1 204.204.7.2
+Lab_D(config)#ip host Lab_E 210.93.105.2
+Lab_D(config)#exit
+Lab_D#
+
+Lab_E:
+
+Router>en
+Router#conf t
+Router(config)#hostname Lab_E
+Lab_E(config)#enable secret class
+Lab_E(config)#line console 0
+Lab_E(config-line)#login
+Lab_E(config-line)#password cisco
+Lab_E(config-line)#line vty 0 4
+Lab_E(config-line)#login
+Lab_E(config-line)#password cisco
+Lab_E(config-line)#exit
+Lab_E(config)#int e0
+Lab_E(config-if)#ip address 210.93.105.2 255.255.255.0
+Lab_E(config-if)#no shutdown
+Lab_E(config-if)#exit
+Lab_E(config-if)#router rip
+Lab_E(config-router)#network 210.93.105.0
+Lab_E(config-router)#exit
+Lab_E(config)#ip host Lab_A 192.5.5.1 205.7.5.1 201.100.11.1
+Lab_E(config)#ip host Lab_B 219.17.100.1 199.6.13.1 201.100.11.2
+Lab_E(config)#ip host Lab_C 223.8.151.1 204.204.7.1 199.6.13.2
+Lab_E(config)#ip host Lab_D 210.93.105.1 204.204.7.2
+Lab_E(config)#ip host Lab_E 210.93.105.2
+Lab_E(config)#exit
+Lab_E#
